@@ -9,24 +9,18 @@
             const params = new URLSearchParams(window.location.search);
             let source = params.get('utm_source');
             let campaign = params.get('utm_campaign');
-            let date = params.get('date');
 
-            if (source && campaign && date) {
+            if (source && campaign) {
                 localStorage.setItem('utm_source', source);
                 localStorage.setItem('utm_campaign', campaign);
-                localStorage.setItem('date', date);
             } else {
                 source = localStorage.getItem('utm_source');
                 campaign = localStorage.getItem('utm_campaign');
-                date = localStorage.getItem('date');
             }
 
             let dynamicText = "Available for full time work";
             if (campaign && source) {
-                dynamicText = `I am available for full time work at ${campaign}, ${source}`;
-            }
-            if (date) {
-                dynamicText += ` starting ${date}`;
+                dynamicText = `I am available for full time work at ${campaign}`;
             }
 
             document.getElementById('dynamic-text').innerText = dynamicText;
